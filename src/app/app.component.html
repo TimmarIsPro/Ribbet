@@ -1,0 +1,76 @@
+
+
+
+
+<app-header></app-header>
+
+
+
+<div class="ui grid segment basic">
+  <form name="inputForm" class="ui large form attached segment" #inputForm="ngForm">
+
+    <h2 class="ui header grey">Add a link</h2>
+
+    <div class="field">
+      <label for="title">Title:</label>
+      <input id="title"  name="title" class="form-control" required minlength="6" [(ngModel)]="articles.title" #newtitle="ngModel">
+      <div [hidden]="newtitle.valid" class="alert alert-danger">
+        Title must be at least 6 characters.
+      </div>
+    </div>
+
+
+    <div class="field">
+      <label for="link">Link:</label>
+      <input id="link" name="link" class="form-control" type="url" pattern="https?://.+" [(ngModel)]="articles.link"  #newlink="ngModel"  required>
+      <div [hidden]="newlink.valid" class="alert alert-danger">
+        Link cannot be blank, and must begin with http:// or https://
+      </div>
+    </div>
+
+
+    <button (click)="addArticle(newtitle, newlink)" [disabled]="inputForm.invalid"
+            class="ui center aligned floated button">
+      Submit Link
+    </button>
+
+    <div class="ui inverted segment">
+      <button (click)="sortedArticles('title', 'desc')"
+              class="ui inverted small center aligned button">
+        Title <i class="arrow down icon red"></i>
+      </button>
+      <button (click)="sortedArticles('title', 'asc')"
+              class="ui inverted small center aligned button">
+        Title <i class="arrow up icon green"></i>
+      </button>
+      <button (click)="sortedArticles('domain', 'desc')"
+              class="ui inverted small center aligned button">
+        Domain <i class="arrow down icon red"></i>
+      </button>
+      <button (click)="sortedArticles('domain', 'asc')"
+              class="ui inverted small center aligned button">
+        Domain <i class="arrow up icon green"></i>
+      </button>
+      <button (click)="sortedArticles('votes', 'desc')"
+              class="ui inverted centered aligned button">
+        Votes <i class="arrow down icon red"></i>
+      </button>
+      <button (click)="sortedArticles('votes', 'asc')"
+              class="ui inverted centered aligned button">
+        Votes <i class="arrow up icon green"></i>
+      </button>
+
+
+
+    </div>
+  </form>
+
+
+    <div class="articles">
+      <app-article *ngFor="let theArticle of displayArticles()"
+                   [article]="theArticle"></app-article>
+    </div>
+
+    <app-footer></app-footer>
+
+</div>

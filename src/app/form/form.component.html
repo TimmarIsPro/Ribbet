@@ -1,0 +1,54 @@
+<form class="ui large form attached segment">
+
+  <h2 class="ui header grey">Add a link</h2>
+
+  <div class="field">
+    <label for="title">Title:</label>
+    <input id="title" name="title" #newtitle>
+  </div>
+  <div class="field">
+    <label for="link">Link:</label>
+    <input id="link" name="link" #newlink>
+  </div>
+
+  <button (click)="addArticle(newtitle, newlink)"
+          class="ui center aligned floated button">
+    Submit Link
+  </button>
+
+
+
+  <app-sortbuttons></app-sortbuttons>
+
+
+
+  <div class="ui inverted segment">
+    <button (click)="sortedArticles('title', 'desc')"
+            class="ui inverted small center aligned button">
+      Title <i class="arrow down icon red"></i>
+    </button>
+    <button (click)="sortedArticles('title', 'asc')"
+            class="ui inverted small center aligned button">
+      Title <i class="arrow up icon green"></i>
+    </button>
+    <button (click)="sortedArticles('domain', 'desc')"
+            class="ui inverted small center aligned button">
+      Domain <i class="arrow down icon red"></i>
+    </button>
+    <button (click)="sortedArticles('domain', 'asc')"
+            class="ui inverted small center aligned button">
+      Domain <i class="arrow up icon green"></i>
+    </button>
+    <button (click)="sortedArticles('votes', 'desc')"
+            class="ui inverted centered aligned button">
+      Votes <i class="arrow down icon red"></i>
+    </button>
+    <button (click)="sortedArticles('votes', 'asc')"
+            class="ui inverted centered aligned button">
+      Votes <i class="arrow up icon green"></i>
+    </button>
+
+
+
+  </div>
+</form>

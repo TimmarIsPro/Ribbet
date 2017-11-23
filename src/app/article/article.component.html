@@ -1,0 +1,41 @@
+<div class ="ui segment basic sixteen column">
+
+  <h3 class="ui top attached segment header grey">
+    <a class="ui link" href="{{article.link}}">
+      {{article.title}}
+      <i class="ui external icon"></i>
+      <br>
+    </a>
+    <small><i>{{article.domain()}}</i></small>
+  </h3>
+
+  <div class="ui grid attached bottom segment">
+    <div class="ui eleven wide column center aligned">
+      <div class="ui statistic orange">
+        <div class="value">
+          {{article.votes}}
+        </div>
+        <div class="label">
+          votes
+        </div>
+      </div>
+    </div>
+
+    <div class="ui five wide column list voters">
+      <p class="ui item">
+        <a href (click)="upVote()">
+          <i class="arrow up icon green"></i>
+          Up
+        </a>
+      </p>
+      <p class="ui item">
+        <a href (click)="downVote()">
+          <i class="arrow down icon red"></i>
+          Down
+        </a>
+      </p>
+    </div>
+
+  </div>
+
+</div>
